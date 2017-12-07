@@ -1,0 +1,22 @@
+
+<div *ngIf="phone" class="ui card">
+    <div class="image">
+      <img [src]="phone.img"/>
+    </div>
+    <div class="content">
+      <h2 class="header">{{phone.name}}</h2>
+      <div class="description">
+        {{phone.description}}
+      </div>
+    </div>
+    <div class="extra content">
+        <p>
+            Battery: {{phone.featuresObj.battery.amount}}
+            {{phone.featuresObj.battery.unit}}
+        </p>
+        <p>
+            Camera: {{phone.featuresObj.camera.amount}}
+            {{phone.featuresObj.camera.unit}}
+        </p>
+    </div>
+</div>

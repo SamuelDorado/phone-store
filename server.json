@@ -1,0 +1,45 @@
+{
+    "phones":[{
+        "id":"ssGN8",
+        "name":"Samsung Galaxy Note 8",
+        "img":"http://www.starhub.com/content/dam/brochureware/samsung/galaxy-note8/carousel-brochureware-galaxy-note8-black.png",
+        "description":"Awesome mobile that will blow your mind",
+        "featuresObj":{
+            "battery":{
+                "amount": 2500, "unit": "mAh"
+            },
+            "camera":{
+                "amount": 8, "unit": "mpx"
+            }
+        }
+    },
+    {
+        "id":"ssGN7",
+        "name":"Samsung Galaxy Note 7",
+        "img":"http://www.androidguys.com/wp-content/uploads/2016/08/01_Galaxy-Note7_blue.png",
+        "description":"Will explode your limits",
+        "featuresObj":{
+            "battery":{
+                "amount": 2500, "unit": "mAh"
+            },
+            "camera":{
+                "amount": 8, "unit": "mpx"
+            }
+        }
+    },
+    {
+        "id":"mi5S",
+        "name":"Xiaomi Mi5S",
+        "img":"https://www.technospain.es/8978-thickbox_default/xiaomi-mi5s.jpg",
+        "description":"Best features to the least cost",
+        "featuresObj":{
+            "battery":{
+                "amount": 2500, "unit": "mAh"
+            },
+            "camera":{
+                "amount": 10, "unit": "mpx"
+            }
+        }
+    }]
+}
+
