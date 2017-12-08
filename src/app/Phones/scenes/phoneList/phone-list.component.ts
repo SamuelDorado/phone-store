@@ -18,10 +18,10 @@ import { GetPhoneListEvent } from '../../../services/Phones/types/PhoneStoreEven
     </article>`
 })
 export class PhoneListComponent implements OnInit {
-    phoneList: Array<Phone>;
+    phoneList: Phone[];
     constructor(private store: PhonesStore,
                 private eventBus : PhonesDispatcher){
-        this.store.state.subscribe((phoneList:Array<Phone>)=>{
+        this.store.state.subscribe((phoneList:Phone[])=>{
             this.phoneList =phoneList ;
         })
     }
