@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Phone } from '../../../model/Phone';
 
-import { Phone } from '../../../services/Phones/types/Phone';
+
 @Component({
     selector:'mm-phone-detail',
     templateUrl:'./phone-detail.component.html'

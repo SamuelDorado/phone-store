@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs/Rx';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SpinnerInterceptor } from '../../services/SpinnerInterceptor/spinner-interceptor.service';
+import { SpinnerInterceptor } from '../../services/spinner-interceptor.service';
 
 @Component({
   selector: 'mm-spinner',

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Phone } from '../../../services/Phones/types/Phone';
-import { PhonesStore } from '../../../services/Phones/phones.store';
-import { PhonesDispatcher } from '../../../services/Phones/phones.dispatcher';
-import { GetPhoneListEvent } from '../../../services/Phones/types/PhoneStoreEvents';
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import * as fromRoot from '../../../reducers';
+import { Phone } from '../../../model/Phone';
+import { PhonesUpdateAction } from '../../../actions/phones';
 
 
 @Component({
@@ -11,21 +12,18 @@ import { GetPhoneListEvent } from '../../../services/Phones/types/PhoneStoreEven
     template:`
     <article>
         <section class="phone-list--container">
-            <ng-container *ngFor="let phone of phoneList|async">
+            <ng-container *ngFor="let phone of (phoneList|async)">
                 <mm-phone-detail [phone]="phone"></mm-phone-detail> 
             </ng-container>
         </section>
     </article>`
 })
 export class PhoneListComponent implements OnInit {
-    phoneList: Array<Phone>;
-    constructor(private store: PhonesStore,
-                private eventBus : PhonesDispatcher){
-        this.store.state.subscribe((phoneList:Array<Phone>)=>{
-            this.phoneList =phoneList ;
-        })
+    phoneList: Observable<Phone[]>;
+    constructor(public store: Store<fromRoot.State>){
+        this.phoneList = store.select(fromRoot.getPhoneList);
     }
-    ngOnInit(){
-        this.eventBus.dispatch(new GetPhoneListEvent())
+    ngOnInit() {
+        this.store.dispatch(new PhonesUpdateAction());
     }
 }
