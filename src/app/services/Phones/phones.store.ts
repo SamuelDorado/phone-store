@@ -1,4 +1,4 @@
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subscription } from 'rxjs';
 import { Injectable, OnInit } from '@angular/core';
 import { PhonesDispatcher } from "./phones.dispatcher";
 import { Phone } from "./types/Phone";
@@ -11,8 +11,8 @@ export class PhonesStore{
     
     constructor(private eventBus: PhonesDispatcher,
                 private service : PhonesService){
-                    this.eventBus.subscribe((event: GetPhoneListEvent)=>{
-                        this.state.next(this.service.getPhoneList())
-                })
+        this.eventBus.subscribe((event: GetPhoneListEvent)=>{
+                this.state.next(this.service.getPhoneList())
+        })
     }
 }

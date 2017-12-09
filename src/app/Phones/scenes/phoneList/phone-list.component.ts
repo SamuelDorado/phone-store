@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Rx';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Phone } from '../../../services/Phones/types/Phone';
 import { PhonesStore } from '../../../services/Phones/phones.store';
 import { PhonesDispatcher } from '../../../services/Phones/phones.dispatcher';
@@ -17,15 +18,19 @@ import { GetPhoneListEvent } from '../../../services/Phones/types/PhoneStoreEven
         </section>
     </article>`
 })
-export class PhoneListComponent implements OnInit {
+export class PhoneListComponent implements OnInit ,OnDestroy{
     phoneList: Phone[];
+    subscription : Subscription;
     constructor(private store: PhonesStore,
                 private eventBus : PhonesDispatcher){
-        this.store.state.subscribe((phoneList:Phone[])=>{
+       this.subscription = this.store.state.subscribe((phoneList:Phone[])=>{
             this.phoneList =phoneList ;
         })
     }
     ngOnInit(){
-        this.eventBus.dispatch(new GetPhoneListEvent())
+        this.eventBus.dispatch(new GetPhoneListEvent());
+    }
+    ngOnDestroy(){
+        this.subscription.unsubscribe();
     }
 }
